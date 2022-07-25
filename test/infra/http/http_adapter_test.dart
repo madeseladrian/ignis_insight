@@ -39,5 +39,11 @@ void main() {
       final response = await sut.request(url: url, method: 'post');
       expect(response, {"any_key":"any_value"});
     });
+
+    test('6 - Should return data if post returns 200 without data', () async { 
+      client.mockPost(200, body: '');
+      final response = await sut.request(url: url, method: 'post');
+      expect(response, null);
+    });
   });  
 }

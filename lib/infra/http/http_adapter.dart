@@ -22,6 +22,6 @@ class HttpAdapter {
       encoding: encoding,
       body: body
     );
-    return jsonDecode(response.body);
+    return response.body.isEmpty ? null : jsonDecode(response.body);
   }
 }

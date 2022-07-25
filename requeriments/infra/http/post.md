@@ -6,7 +6,7 @@
 3. ✅ Chamar request com o encoding correto
 4. ✅ Chamar request com body correto
 5. ✅ Ok - 200 e resposta com dados
-6. ❌ Ok - 200 e sem body
+6. ✅ Ok - 200 e sem body
 7. ❌ No content - 204 e resposta sem dados
 8. ❌ No content - 204 e resposta com dados
 
