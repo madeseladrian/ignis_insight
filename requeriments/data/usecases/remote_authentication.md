@@ -4,7 +4,7 @@
 1. ✅ Sistema faz uma requisição para a URL da API de login
 2. ✅ Sistema faz uma requisição para o método correto
 3. ✅ Sistema valida os dados recebidos
-4. ❌ Sistema entrega os dados da conta do usuário
+4. ✅ Sistema entrega os dados da conta do usuário
 
 > ## Exceção - Dados inválidos (Bad Request - 400)
 5. ❌ Sistema retorna uma mensagem de erro inesperado

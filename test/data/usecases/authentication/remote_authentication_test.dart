@@ -10,6 +10,7 @@ import 'package:mocktail/mocktail.dart';
 void main() {
   late String url;
   late AuthenticationParams params;
+  late Map apiResult;
   late HttpClientSpy httpClient;
   late RemoteAuthentication sut;
 
@@ -19,8 +20,9 @@ void main() {
       email: faker.internet.email(),
       password: faker.internet.password()
     );
+    apiResult = {"access_token": faker.guid.guid()};
     httpClient = HttpClientSpy();
-    httpClient.mockRequest();
+    httpClient.mockRequest(apiResult);
     sut = RemoteAuthentication(url: url, httpClient: httpClient);
   });
 
@@ -31,5 +33,10 @@ void main() {
       method: 'post',
       body: {"username": params.email, "password": params.password}
     ));
+  });
+
+  test('4 - Should return an AccountEntity if HttpClient returns 200', () async {
+    final accountEntity = await sut.auth(params);
+    expect(accountEntity.token, apiResult['access_token']);
   });
 }
