@@ -205,4 +205,13 @@ void main() {
 
     expect(find.text('Credenciais inválidas.'), findsOneWidget);
   });
+
+  testWidgets('17 - Should present error message if authentication throws', (WidgetTester tester) async {
+    await _testPage(tester);
+
+    mainErrorController.add(UIError.unexpected);
+    await tester.pump();
+
+    expect(find.text('Algo errado aconteceu. Tente novamente em breve.'), findsOneWidget);
+  });
 }
