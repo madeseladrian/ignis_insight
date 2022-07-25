@@ -252,4 +252,16 @@ void main() {
 
     verify(() => presenter.support()).called(1);
   });
+
+  testWidgets('21 - Should call support on click text button in the body', (WidgetTester tester) async {
+    await _testPage(tester);
+
+    await tester.pump();
+    final button = find.byKey(const Key('support body'));
+    await tester.ensureVisible(button);
+    await tester.tap(button);
+    await tester.pump();
+
+    verify(() => presenter.support()).called(1);
+  });
 }
