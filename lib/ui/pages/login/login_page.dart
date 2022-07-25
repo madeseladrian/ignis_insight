@@ -3,10 +3,11 @@ import 'package:get/get.dart';
 
 import '../../components/components.dart';
 import '../../helpers/helpers.dart';
+import '../../mixins/mixins.dart';
 import 'components/components.dart';
 import 'login.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatelessWidget with LoadingManager {
   final LoginPresenter presenter;
 
   const LoginPage({Key? key, required this.presenter}) : super(key: key);
@@ -21,13 +22,7 @@ class LoginPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         body: Builder(
           builder: (context) {
-            presenter.isLoadingStream.listen((isLoading) {
-              if (isLoading == true) {
-                showLoading(context);
-              } else {
-                hideLoading(context);
-              }
-            });
+            handleLoading(context, presenter.isLoadingStream);
 
             presenter.mainErrorStream.listen((error) {
               if (error != null) {
