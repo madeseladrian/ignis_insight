@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../helpers/i18n/resources.dart';
+
+import '../../../helpers/helpers.dart';
 import '../login.dart';
 
 class PasswordInput extends StatelessWidget {
@@ -9,12 +10,18 @@ class PasswordInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final presenter = Get.find<LoginPresenter>();
-    return TextFormField(
-      decoration: InputDecoration(
-        labelText: R.strings.password
-      ),
-      obscureText: true,
-      onChanged: presenter.validatePassword,
+    return StreamBuilder<UIError?>(
+      stream: presenter.passwordErrorStream,
+      builder: (context, snapshot) {
+        return TextFormField(
+          decoration: InputDecoration(
+            labelText: R.strings.password,
+            errorText: snapshot.data?.description
+          ),
+          obscureText: true,
+          onChanged: presenter.validatePassword,
+        );
+      }
     );
   }
 }

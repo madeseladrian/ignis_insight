@@ -4,22 +4,25 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
-import 'package:ignis_insight/ui/helpers/helpers.dart';
- 
-import 'package:ignis_insight/ui/pages/pages.dart';
 import 'package:mocktail/mocktail.dart';
+ 
+import 'package:ignis_insight/ui/helpers/helpers.dart';
+import 'package:ignis_insight/ui/pages/pages.dart';
 
 class LoginPresenterSpy extends Mock implements LoginPresenter {}
 
 void main() {
   late LoginPresenter presenter;
   late StreamController<UIError?> emailErrorController; 
+  late StreamController<UIError?> passwordErrorController; 
 
   Future<void> _testPage(WidgetTester tester) async {
     presenter = LoginPresenterSpy();
     emailErrorController = StreamController<UIError?>();
+    passwordErrorController = StreamController<UIError?>();
     
     when(() => presenter.emailErrorStream).thenAnswer((_) => emailErrorController.stream);
+    when(() => presenter.passwordErrorStream).thenAnswer((_) => passwordErrorController.stream);
 
     final page = GetMaterialApp(
       initialRoute: '/login',
@@ -101,5 +104,14 @@ void main() {
       find.descendant(of: find.bySemanticsLabel('Email'), matching: find.byType(Text)),
       findsOneWidget
     );
+  });
+
+  testWidgets('9 - Should present error if password is empty', (WidgetTester tester) async {
+    await _testPage(tester);
+
+    passwordErrorController.add(UIError.requiredField);
+    await tester.pump();
+
+    expect(find.text('Campo obrigatório'), findsOneWidget);
   });
 }
