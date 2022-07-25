@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../helpers/i18n/resources.dart';
+import '../../../helpers/i18n/resources.dart';
 
 class PasswordInput extends StatelessWidget {
   const PasswordInput({Key? key}) : super(key: key);

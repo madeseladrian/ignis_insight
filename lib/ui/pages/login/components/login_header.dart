@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../components/components.dart';
-import '../../helpers/i18n/i18n.dart';
+import '../../../components/components.dart';
+import '../../../helpers/i18n/i18n.dart';
 
 class LoginHeader extends StatelessWidget {
   const LoginHeader({Key? key}) : super(key: key);
