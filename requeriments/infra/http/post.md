@@ -21,4 +21,4 @@
 12.✅ Internal server error - 500
 
 > ## Exceção - Verbo http inválido
-13.❌ Internal server error - 500
+13.✅ Internal server error - 500

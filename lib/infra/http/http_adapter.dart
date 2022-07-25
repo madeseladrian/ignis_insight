@@ -19,12 +19,14 @@ class HttpAdapter {
     final encoding = Encoding.getByName('utf-8');
     var response = Response('', 500);
     try {
-      response = await client.post(
-        Uri.parse(url), 
-        headers: headers,
-        encoding: encoding,
-        body: body
-      );
+      if (method == 'post') {
+        response = await client.post(
+          Uri.parse(url), 
+          headers: headers,
+          encoding: encoding,
+          body: body
+        );
+      }
     } catch (error) {
       throw HttpError.serverError;
     }

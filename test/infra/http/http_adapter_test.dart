@@ -78,6 +78,7 @@ void main() {
       expect(future, throwsA(HttpError.serverError));
     });
 
+    // Is an error different from the others
     test('11 - Should return ServerError if post throws with 404', () async {
       client.mockPost(404); 
       final future = sut.request(url: url, method: 'post');
@@ -88,6 +89,11 @@ void main() {
       client.mockPostError(); 
       final future = sut.request(url: url, method: 'post');
       expect(future, throwsA(HttpError.serverError));
+    });
+
+    test('13 - Should throw ServerError if invalid method is provided', () {
+      final future = sut.request(url: url, method: 'invalid_method');
+      expect(() => future, throwsA(HttpError.serverError));
     });
   });  
 }
