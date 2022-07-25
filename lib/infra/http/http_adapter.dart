@@ -8,7 +8,8 @@ class HttpAdapter {
   HttpAdapter({required this.client});
 
   Future<void> request({
-    required String url
+    required String url,
+    Map? body
   }) async {
     final headers = {
       "Content-Type": "application/x-www-form-urlencoded"
@@ -17,7 +18,8 @@ class HttpAdapter {
     await client.post(
       Uri.parse(url), 
       headers: headers,
-      encoding: encoding
+      encoding: encoding,
+      body: body
     );
   }
 }

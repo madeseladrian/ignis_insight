@@ -23,14 +23,15 @@ void main() {
   });
 
   group('post', () {
-    test('1,2,3 - Should call post with correct values', () async {
-      sut.request(url: url);
+    test('1,2,3,4 - Should call post with correct values', () async {
+      sut.request(url: url, body: {"any_key":"any_value"});
       verify(() => client.post(
         Uri.parse(url),
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
         },
-        encoding: Encoding.getByName('utf-8')
+        encoding: Encoding.getByName('utf-8'),
+        body: {"any_key":"any_value"}
       ));
     });
   });  
