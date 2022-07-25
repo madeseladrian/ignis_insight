@@ -18,7 +18,7 @@
 15.✅ Esconder loading no fim da ação de login
 16.✅ Exibir mensagem de erro caso o login falhe
 17.✅ Exibir mensagem de erro caso o login apresente algum error inesperado
-18.❌ Garantir que para qualquer rota selecionada, muda-se de página
+18.✅ Garantir que para qualquer rota selecionada, muda-se de página
 19.❌ Ficar na mesma página, caso a rota esteja errada
 20.❌ Chamar o método de suporte ao clicar no link in header
 21.❌ Chamar o método de suporte ao clicar no link in body

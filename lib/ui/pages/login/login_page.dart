@@ -35,6 +35,16 @@ class LoginPage extends StatelessWidget {
               }
             });
 
+            presenter.navigateToStream.listen((page) {
+              if (page != null && page.isNotEmpty) {
+                if (page != '/initial' && page != '/login') {
+                  Get.toNamed(page);
+                } else {
+                  Get.offAllNamed(page);
+                }
+              }
+            });
+
             return ConstrainedBox(
               constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
               child: Center(
