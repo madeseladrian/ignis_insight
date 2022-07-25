@@ -2,7 +2,6 @@ import 'package:ignis_insight/data/http/http.dart';
 import 'package:ignis_insight/domain/helpers/helpers.dart';
 import 'package:ignis_insight/domain/params/params.dart';
 import 'package:ignis_insight/data/usecases/usecases.dart';
-
 import '../../mocks/mocks.dart';
 
 import 'package:faker/faker.dart';
