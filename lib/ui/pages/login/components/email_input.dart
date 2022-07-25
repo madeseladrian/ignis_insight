@@ -10,12 +10,18 @@ class EmailInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final presenter = Get.find<LoginPresenter>();
-    return TextFormField(
-      decoration: InputDecoration(
-        labelText: R.strings.email,
-      ),
-      keyboardType: TextInputType.emailAddress,
-      onChanged: presenter.validateEmail,
+    return StreamBuilder<UIError?>(
+      stream: presenter.emailErrorStream,
+      builder: (context, snapshot) {
+        return TextFormField(
+          decoration: InputDecoration(
+            labelText: R.strings.email,
+            errorText: snapshot.data?.description
+          ),
+          keyboardType: TextInputType.emailAddress,
+          onChanged: presenter.validateEmail,
+        );
+      }
     );
   }
 }
