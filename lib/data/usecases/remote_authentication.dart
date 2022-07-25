@@ -1,3 +1,5 @@
+import 'package:ignis_insight/domain/helpers/domain_error.dart';
+
 import '../../domain/entities/entities.dart';
 import '../../domain/params/params.dart';
 
@@ -12,8 +14,12 @@ class RemoteAuthentication {
   RemoteAuthentication({required this.url, required this.httpClient});
 
   Future<AccountEntity> auth(AuthenticationParams params) async {
-    final body = RemoteAuthenticationParams.fromDomain(params).toJson();
-    final httpResponse = await httpClient.request(url: url, method: 'post', body: body);
-    return RemoteAccountModel.fromJson(httpResponse).toEntity();
+    try {
+      final body = RemoteAuthenticationParams.fromDomain(params).toJson();
+      final httpResponse = await httpClient.request(url: url, method: 'post', body: body);
+      return RemoteAccountModel.fromJson(httpResponse).toEntity();
+    } on HttpError {
+      throw DomainError.unexpected;
+    }
   }
 }

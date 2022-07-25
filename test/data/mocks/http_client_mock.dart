@@ -1,4 +1,4 @@
-import 'package:ignis_insight/data/http/http_client.dart';
+import 'package:ignis_insight/data/http/http.dart';
 import 'package:mocktail/mocktail.dart';
 
 class HttpClientSpy extends Mock implements HttpClient {
@@ -8,5 +8,8 @@ class HttpClientSpy extends Mock implements HttpClient {
     body: any(named: 'body')
   ));
 
-  void mockRequest(dynamic data) => mockRequestCall().thenAnswer((_) async => data); 
+  void mockRequest(dynamic data) => 
+    mockRequestCall().thenAnswer((_) async => data); 
+
+  void mockError(HttpError error) => mockRequestCall().thenThrow(error);
 }

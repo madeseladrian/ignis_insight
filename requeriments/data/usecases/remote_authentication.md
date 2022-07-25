@@ -7,7 +7,7 @@
 4. ✅ Sistema entrega os dados da conta do usuário
 
 > ## Exceção - Dados inválidos (Validation Error - 422)
-5. ❌ Sistema retorna uma mensagem de erro inesperado
+5. ✅ Sistema retorna uma mensagem de erro inesperado
 
 > ## Exceção - Falha no servidor (Internal Server Error - 500)
 6. ❌ Sistema retorna uma mensagem de erro inesperado

@@ -1,3 +1,5 @@
+import 'package:ignis_insight/data/http/http.dart';
+import 'package:ignis_insight/domain/helpers/helpers.dart';
 import 'package:ignis_insight/domain/params/params.dart';
 import 'package:ignis_insight/data/usecases/usecases.dart';
 
@@ -38,5 +40,11 @@ void main() {
   test('4 - Should return an AccountEntity if HttpClient returns 200', () async {
     final accountEntity = await sut.auth(params);
     expect(accountEntity.token, apiResult['access_token']);
+  });
+
+  test('5 - Should throw ValidationError if HttpClient returns 422', () async {
+    httpClient.mockError(HttpError.validationError);
+    final future = sut.auth(params);
+    expect(future, throwsA(DomainError.unexpected));
   });
 }
