@@ -22,6 +22,13 @@ class HttpAdapter {
       encoding: encoding,
       body: body
     );
-    return response.body.isEmpty ? null : jsonDecode(response.body);
+    return _handleResponse(response);
+  }
+
+  Map? _handleResponse(Response response) {
+    switch (response.statusCode) {
+      case 200: return response.body.isEmpty ? null : jsonDecode(response.body);
+      default: return null;
+    }
   }
 }
