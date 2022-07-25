@@ -81,4 +81,13 @@ void main() {
 
     expect(find.text('Campo inválido'), findsOneWidget);
   });
+
+  testWidgets('7 - Should present error if email is empty', (WidgetTester tester) async {
+    await _testPage(tester);
+
+    emailErrorController.add(UIError.requiredField);
+    await tester.pump();
+
+    expect(find.text('Campo obrigatório'), findsOneWidget);
+  });
 }
