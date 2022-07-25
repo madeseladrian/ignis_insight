@@ -16,18 +16,21 @@ void main() {
   late StreamController<UIError?> emailErrorController; 
   late StreamController<UIError?> passwordErrorController; 
   late StreamController<bool> isFormValidController; 
+  late StreamController<bool> isLoadingController;
 
   Future<void> _testPage(WidgetTester tester) async {
     presenter = LoginPresenterSpy();
     emailErrorController = StreamController<UIError?>();
     passwordErrorController = StreamController<UIError?>();
     isFormValidController = StreamController<bool>();
+    isLoadingController = StreamController<bool>();
     
     when(() => presenter.auth()).thenAnswer((_) async => _);
     when(() => presenter.emailErrorStream).thenAnswer((_) => emailErrorController.stream);
     when(() => presenter.passwordErrorStream).thenAnswer((_) => passwordErrorController.stream);
     when(() => presenter.isFormValidStream).thenAnswer((_) => isFormValidController.stream);
-    
+    when(() => presenter.isLoadingStream).thenAnswer((_) => isLoadingController.stream);
+
     final page = GetMaterialApp(
       initialRoute: '/login',
       getPages: [
@@ -36,6 +39,13 @@ void main() {
     );
     await tester.pumpWidget(page);
   }
+
+  tearDown(() {
+    emailErrorController.close();
+    passwordErrorController.close();
+    isFormValidController.close();
+    isLoadingController.close();
+  });
 
   testWidgets('1,2,3 - Should load with correct initial state', (WidgetTester tester) async {
     await _testPage(tester);
@@ -162,5 +172,14 @@ void main() {
     await tester.pump();
 
     verify(() => presenter.auth()).called(1);
+  });
+
+  testWidgets('14 - Should present loading', (WidgetTester tester) async {
+    await _testPage(tester);
+
+    isLoadingController.add(true);
+    await tester.pump();
+
+    expect(find.byType(CircularProgressIndicator), findsOneWidget);
   });
 }
