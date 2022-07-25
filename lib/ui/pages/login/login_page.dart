@@ -76,7 +76,7 @@ class LoginPage extends StatelessWidget {
                           key: const Key('recover password'),
                           text: R.strings.forgotPassword, 
                           routeText: R.strings.recoverPassword, 
-                          onTap: () {}
+                          onTap: presenter.recoverPassword
                         ),
                         HelpLogin(
                           key: const Key('support body'),

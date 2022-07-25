@@ -21,5 +21,5 @@
 18.✅ Garantir que para qualquer rota selecionada, muda-se de página
 19.✅ Ficar na mesma página, caso a rota esteja errada
 20.✅ Chamar o método de suporte ao clicar no link in header
-21.❌ Chamar o método de suporte ao clicar no link in body
-22.❌ Chamar o método de recuperar senha ao clicar no link
+21.✅ Chamar o método de suporte ao clicar no link in body
+22.✅ Chamar o método de recuperar senha ao clicar no link
