@@ -21,10 +21,13 @@ void main() {
   });
 
   group('post', () {
-    test('1 - Should call post with correct url', () async {
+    test('1,2 - Should call post with correct values', () async {
       sut.request(url: url);
       verify(() => client.post(
-        Uri.parse(url)
+        Uri.parse(url),
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        }
       ));
     });
   });  

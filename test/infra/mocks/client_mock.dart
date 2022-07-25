@@ -7,7 +7,8 @@ class ClientSpy extends Mock implements Client {
   }
 
   When mockPostCall() => when(() => this.post(
-    any()
+    any(),
+    headers: any(named: 'headers')
   ));
 
   void mockPost(int statusCode, {String body = '{"any_key":"any_value"}'}) => 
