@@ -1,3 +1,5 @@
+import 'package:ignis_insight/data/http/http.dart';
+
 import '../mocks/mocks.dart';
 
 import 'dart:convert';
@@ -56,6 +58,19 @@ void main() {
       client.mockPost(204); 
       final response = await sut.request(url: url, method: 'post');
       expect(response, null);
+    });
+
+    // Tests with body is not necessary, because it is the same as without body
+    test('9 - Should return ValidationError if post returns 422 with body', () async {
+      client.mockPost(422, body: ''); 
+      final future = sut.request(url: url, method: 'post');
+      expect(future, throwsA(HttpError.validationError));
+    });
+
+    test('9 - Should return ValidationError if post returns 422', () async {
+      client.mockPost(422); 
+      final future = sut.request(url: url, method: 'post');
+      expect(future, throwsA(HttpError.validationError));
     });
   });  
 }

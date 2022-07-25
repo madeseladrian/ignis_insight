@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
+import 'package:ignis_insight/data/http/http.dart';
 
 class HttpAdapter {
   final Client client;
@@ -28,6 +29,7 @@ class HttpAdapter {
   Map? _handleResponse(Response response) {
     switch (response.statusCode) {
       case 200: return response.body.isEmpty ? null : jsonDecode(response.body);
+      case 422: throw HttpError.validationError;
       default: return null;
     }
   }

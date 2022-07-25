@@ -11,7 +11,7 @@
 8. ✅ No content - 204 e resposta com dados
 
 > ## Erros
-9. ❌ Validation Error - 422
+9. ✅ Validation Error - 422
 10.❌ Internal server error - 500
 
 > ## Exceção - Status code diferente dos citados acima
