@@ -3,7 +3,8 @@ import 'package:mocktail/mocktail.dart';
 
 class HttpClientSpy extends Mock implements HttpClient {
   When mockRequestCall() => when(() => request(
-    url: any(named: 'url')
+    url: any(named: 'url'),
+    method: any(named: 'method')
   ));
 
   void mockRequest() => mockRequestCall().thenAnswer((_) async => _); 
