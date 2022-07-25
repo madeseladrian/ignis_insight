@@ -15,7 +15,7 @@
 10.✅ Internal server error - 500
 
 > ## Exceção - Status code diferente dos citados acima
-11.❌ Internal server error - 500
+11.✅ Internal server error - 500
 
 > ## Exceção - Http request deu alguma exceção
 12.❌ Internal server error - 500
