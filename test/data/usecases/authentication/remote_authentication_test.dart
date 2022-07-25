@@ -1,34 +1,26 @@
 import 'package:ignis_insight/domain/params/params.dart';
-
 import 'package:ignis_insight/data/usecases/usecases.dart';
-import 'package:ignis_insight/data/http/http.dart';
+
+import '../../mocks/mocks.dart';
 
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-class HttpClientSpy extends Mock implements HttpClient {}
-
 void main() {
   late String url;
   late AuthenticationParams params;
-  late HttpClient httpClient;
+  late HttpClientSpy httpClient;
   late RemoteAuthentication sut;
 
-  When mockRequestCall() => when(() => httpClient.request(
-    url: url
-  ));
-
-  void mockRequest() => mockRequestCall().thenAnswer((_) async => _);
-
   setUp(() {
+    url = faker.internet.httpUrl();
     params = AuthenticationParams(
       email: faker.internet.email(),
       password: faker.internet.password()
     );
-    url = faker.internet.httpUrl();
     httpClient = HttpClientSpy();
-    mockRequest();
+    httpClient.mockRequest();
     sut = RemoteAuthentication(url: url, httpClient: httpClient);
   });
 
