@@ -7,19 +7,21 @@ class HttpAdapter {
   
   HttpAdapter({required this.client});
 
-  Future<void> request({
+  Future<Map?> request({
     required String url,
+    required String method,
     Map? body
   }) async {
     final headers = {
       "Content-Type": "application/x-www-form-urlencoded"
     };
     final encoding = Encoding.getByName('utf-8');
-    await client.post(
+    final response = await client.post(
       Uri.parse(url), 
       headers: headers,
       encoding: encoding,
       body: body
     );
+    return jsonDecode(response.body);
   }
 }
