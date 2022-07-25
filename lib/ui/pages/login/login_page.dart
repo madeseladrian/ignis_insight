@@ -29,6 +29,12 @@ class LoginPage extends StatelessWidget {
               }
             });
 
+            presenter.mainErrorStream.listen((error) {
+              if (error != null) {
+                showErrorMessage(context, error.description);
+              }
+            });
+
             return ConstrainedBox(
               constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
               child: Center(
