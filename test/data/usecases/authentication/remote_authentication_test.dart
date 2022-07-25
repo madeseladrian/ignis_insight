@@ -1,27 +1,13 @@
 import 'package:ignis_insight/domain/params/params.dart';
 
+import 'package:ignis_insight/data/usecases/usecases.dart';
+import 'package:ignis_insight/data/http/http.dart';
+
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-abstract class HttpClient {
-  Future<dynamic> request({
-    required String url
-  });
-}
-
 class HttpClientSpy extends Mock implements HttpClient {}
-
-class RemoteAuthentication {
-  final String url;
-  final HttpClient httpClient;
-
-  RemoteAuthentication({required this.url, required this.httpClient});
-
-  Future<void> auth(AuthenticationParams params) async {
-    await httpClient.request(url: url);
-  }
-}
 
 void main() {
   late String url;
