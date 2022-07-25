@@ -1,21 +1,19 @@
+import '../../data/http/http.dart';
 import 'dart:convert';
-
 import 'package:http/http.dart';
-import 'package:ignis_insight/data/http/http.dart';
 
-class HttpAdapter {
+class HttpAdapter implements HttpClient {
   final Client client;
   
   HttpAdapter({required this.client});
 
+  @override
   Future<Map?> request({
     required String url,
     required String method,
     Map? body
   }) async {
-    final headers = {
-      "Content-Type": "application/x-www-form-urlencoded"
-    };
+    final headers = {"Content-Type": "application/x-www-form-urlencoded"};
     final encoding = Encoding.getByName('utf-8');
     var response = Response('', 500);
     try {
