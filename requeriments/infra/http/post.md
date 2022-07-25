@@ -12,7 +12,7 @@
 
 > ## Erros
 9. ✅ Validation Error - 422
-10.❌ Internal server error - 500
+10.✅ Internal server error - 500
 
 > ## Exceção - Status code diferente dos citados acima
 11.❌ Internal server error - 500

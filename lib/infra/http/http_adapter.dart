@@ -29,8 +29,9 @@ class HttpAdapter {
   Map? _handleResponse(Response response) {
     switch (response.statusCode) {
       case 200: return response.body.isEmpty ? null : jsonDecode(response.body);
+      case 204: return null;
       case 422: throw HttpError.validationError;
-      default: return null;
+      default: throw HttpError.serverError;
     }
   }
 }
