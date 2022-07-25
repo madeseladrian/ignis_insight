@@ -1,12 +1,14 @@
-import 'package:ignis_insight/data/http/http.dart';
-import 'package:ignis_insight/domain/helpers/helpers.dart';
-import 'package:ignis_insight/domain/params/params.dart';
-import 'package:ignis_insight/data/usecases/usecases.dart';
-import '../../mocks/mocks.dart';
-
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+
+import 'package:ignis_insight/domain/helpers/helpers.dart';
+import 'package:ignis_insight/domain/params/params.dart';
+
+import 'package:ignis_insight/data/http/http.dart';
+import 'package:ignis_insight/data/usecases/usecases.dart';
+
+import '../../mocks/mocks.dart';
 
 void main() {
   late String url;

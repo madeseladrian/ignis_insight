@@ -1,0 +1,64 @@
+import 'package:flutter/material.dart';
+
+import '../helpers/helpers.dart';
+import 'components/components.dart';
+
+class LoginPage extends StatelessWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: boxImage,
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: ConstrainedBox(
+          constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const LoginHeader(),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)
+                  ),
+                  padding: const EdgeInsets.only(right: 24, left: 24, top: 16, bottom: 16),
+                  margin: const EdgeInsets.only(left: 8.0, right: 8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: const [
+                      EmailInput(),
+                      PasswordInput(),
+                      LoginButton()
+                    ],
+                  ),
+                ),
+                Column(
+                  children: [
+                    HelpLogin(
+                      key: const Key('recover password'),
+                      text: R.strings.forgotPassword, 
+                      routeText: R.strings.recoverPassword, 
+                      onTap: () {}
+                    ),
+                    HelpLogin(
+                      key: const Key('support body'),
+                      text: R.strings.needHelp, 
+                      routeText: R.strings.clickHere, 
+                      onTap: () {}
+                    )
+                  ],
+                ),
+                const SizedBox(height: 24),
+              ],
+            )
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -1,5 +1,5 @@
-import 'package:ignis_insight/data/http/http.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:ignis_insight/data/http/http.dart';
 
 class HttpClientSpy extends Mock implements HttpClient {
   When mockRequestCall() => when(() => request(
