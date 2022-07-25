@@ -82,7 +82,7 @@ class LoginPage extends StatelessWidget {
                           key: const Key('support body'),
                           text: R.strings.needHelp, 
                           routeText: R.strings.clickHere, 
-                          onTap: () {}
+                          onTap: presenter.support
                         )
                       ],
                     ),
