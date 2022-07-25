@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../components/components.dart';
 import '../../helpers/helpers.dart';
 import '../../mixins/mixins.dart';
 import 'components/components.dart';
 import 'login.dart';
 
-class LoginPage extends StatelessWidget with LoadingManager {
+class LoginPage extends StatelessWidget with LoadingManager, UIErrorManager {
   final LoginPresenter presenter;
 
   const LoginPage({Key? key, required this.presenter}) : super(key: key);
@@ -23,12 +22,7 @@ class LoginPage extends StatelessWidget with LoadingManager {
         body: Builder(
           builder: (context) {
             handleLoading(context, presenter.isLoadingStream);
-
-            presenter.mainErrorStream.listen((error) {
-              if (error != null) {
-                showErrorMessage(context, error.description);
-              }
-            });
+            handleMainError(context, presenter.mainErrorStream);
 
             presenter.navigateToStream.listen((page) {
               if (page != null && page.isNotEmpty) {
