@@ -6,7 +6,7 @@ import '../../mixins/mixins.dart';
 import 'components/components.dart';
 import 'login.dart';
 
-class LoginPage extends StatelessWidget with LoadingManager, UIErrorManager {
+class LoginPage extends StatelessWidget with LoadingManager, NavigationManager, UIErrorManager {
   final LoginPresenter presenter;
 
   const LoginPage({Key? key, required this.presenter}) : super(key: key);
@@ -23,16 +23,7 @@ class LoginPage extends StatelessWidget with LoadingManager, UIErrorManager {
           builder: (context) {
             handleLoading(context, presenter.isLoadingStream);
             handleMainError(context, presenter.mainErrorStream);
-
-            presenter.navigateToStream.listen((page) {
-              if (page != null && page.isNotEmpty) {
-                if (page != '/initial' && page != '/login') {
-                  Get.toNamed(page);
-                } else {
-                  Get.offAllNamed(page);
-                }
-              }
-            });
+            handleNavigation(presenter.navigateToStream);
 
             return ConstrainedBox(
               constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
