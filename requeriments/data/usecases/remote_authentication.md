@@ -13,4 +13,4 @@
 6. ✅ Sistema retorna uma mensagem de erro inesperado
 
 > ## Exceção - Resposta inválida (OK - 200)
-7. ❌ Sistema retorna uma mensagem de erro inesperado
+7. ✅ Sistema retorna uma mensagem de erro inesperado
