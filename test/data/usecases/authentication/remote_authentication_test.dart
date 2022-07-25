@@ -24,11 +24,12 @@ void main() {
     sut = RemoteAuthentication(url: url, httpClient: httpClient);
   });
 
-  test('1,2 - Should call HttpClient with correct values', () async {
+  test('1,2,3 - Should call HttpClient with correct values', () async {
     await sut.auth(params);
     verify(() => httpClient.request(
       url: url,
-      method: 'post'
+      method: 'post',
+      body: {"username": params.email, "password": params.password}
     ));
   });
 }

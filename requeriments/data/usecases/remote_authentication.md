@@ -3,7 +3,7 @@
 > ## Caso de sucesso (OK - 200)
 1. ✅ Sistema faz uma requisição para a URL da API de login
 2. ✅ Sistema faz uma requisição para o método correto
-3. ❌ Sistema valida os dados recebidos
+3. ✅ Sistema valida os dados recebidos
 4. ❌ Sistema entrega os dados da conta do usuário
 
 > ## Exceção - Dados inválidos (Bad Request - 400)
