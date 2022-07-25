@@ -3,6 +3,7 @@ import '../../domain/params/params.dart';
 
 import '../http/http.dart';
 import '../models/models.dart';
+import '../params/params.dart';
 
 class RemoteAuthentication {
   final String url;
@@ -11,7 +12,7 @@ class RemoteAuthentication {
   RemoteAuthentication({required this.url, required this.httpClient});
 
   Future<AccountEntity> auth(AuthenticationParams params) async {
-    final body = {"username": params.email, "password": params.password};
+    final body = RemoteAuthenticationParams.fromDomain(params).toJson();
     final httpResponse = await httpClient.request(url: url, method: 'post', body: body);
     return RemoteAccountModel.fromJson(httpResponse).toEntity();
   }
