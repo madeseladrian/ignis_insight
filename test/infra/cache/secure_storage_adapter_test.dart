@@ -22,4 +22,10 @@ void main() {
     await sut.save(key: key, value: value);
     verify(() => secureStorage.write(key: key, value: value));
   });
+
+  test('2 - Should throw if save secure throws', () async {
+    secureStorage.mockSaveError();
+    final future = sut.save(key: key, value: value);
+    expect(future, throwsA(const TypeMatcher<Exception>()));
+  });
 }
