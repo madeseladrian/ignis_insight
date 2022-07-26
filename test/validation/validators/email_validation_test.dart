@@ -22,4 +22,8 @@ void main() {
     final error = sut.validate({'any_field': 'mades@gmail.com'});
     expect(error, null);
   });
+  
+  test('4 - Should return error if email is invalid', () async {
+    expect(sut.validate({'any_field': 'madesgmail.com'}), 'Campo inválido');
+  });
 }
