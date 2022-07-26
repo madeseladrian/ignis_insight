@@ -12,4 +12,9 @@ void main() {
     final error = sut.validate({'any_field': ''});
     expect(error, 'Campo inválido');
   });
+  
+  test('2 - Should return error if value is null', () {
+    final error = sut.validate({});
+    expect(error, 'Campo inválido');
+  });
 }
