@@ -29,5 +29,9 @@ void main() {
     final name = sut.validate({'any_field': faker.randomGenerator.string(3, min: 3)});
     expect(name, null);
   });
-
+  
+  test('5 - Should return null if value is bigger than min size', () {
+    final name = sut.validate({'any_field': faker.randomGenerator.string(10, min: 6)});
+    expect(name, null);
+  });
 }
