@@ -17,4 +17,9 @@ void main() {
     final error = sut.validate({});
     expect(error, null);
   });
+
+  test('3 - Should return null if email is valid', () async {
+    final error = sut.validate({'any_field': 'mades@gmail.com'});
+    expect(error, null);
+  });
 }
