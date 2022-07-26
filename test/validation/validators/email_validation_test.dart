@@ -7,9 +7,14 @@ void main() {
   setUp(() {
     sut = const EmailValidation('any_field');
   });
-  
+
   test('1 - Should return null if email is empty', () async {
     final error = sut.validate({'any_field': ''});
+    expect(error, null);
+  });
+
+  test('2 - Should return null if email is null', () async {
+    final error = sut.validate({});
     expect(error, null);
   });
 }
