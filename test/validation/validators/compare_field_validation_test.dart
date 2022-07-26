@@ -32,4 +32,7 @@ void main() {
     expect(sut.validate({'any_field': null, 'other_field': null}), null);
   });
 
+  test('6 - Should return null if both fields are missing', () {
+    expect(sut.validate({}), null);
+  });
 }
