@@ -17,4 +17,9 @@ void main() {
     final error = sut.validate({'any_field': ''});
     expect(error, 'Campo obrigatório');
   });
+
+  test('3 - Should return error if value is null', () async {
+    final error = sut.validate({});
+    expect(error, 'Campo obrigatório');
+  });
 }
