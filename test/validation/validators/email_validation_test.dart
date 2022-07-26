@@ -1,5 +1,7 @@
-import 'package:ignis_insight/validation/validators/email_validation.dart';
 import 'package:test/test.dart';
+
+import 'package:ignis_insight/presentation/helpers/helpers.dart';
+import 'package:ignis_insight/validation/validators/validators.dart';
  
 void main() {
   late EmailValidation sut;
@@ -24,6 +26,6 @@ void main() {
   });
   
   test('4 - Should return error if email is invalid', () async {
-    expect(sut.validate({'any_field': 'madesgmail.com'}), 'Campo inválido');
+    expect(sut.validate({'any_field': 'madesgmail.com'}), ValidationError.invalidField);
   });
 }

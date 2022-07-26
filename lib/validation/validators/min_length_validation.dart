@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 
+import '../../presentation/helpers/helpers.dart';
 import '../protocols/protocols.dart';
 
 class MinLengthValidation extends Equatable implements FieldValidation {
@@ -13,8 +14,8 @@ class MinLengthValidation extends Equatable implements FieldValidation {
   const MinLengthValidation({ required this.field, required this.size});
 
   @override
-  String? validate(Map input) {
+  ValidationError? validate(Map input) {
     return input[field] != null && input[field].length >= size 
-      ? null : 'Campo inválido';
+      ? null : ValidationError.invalidField;
   }
 }

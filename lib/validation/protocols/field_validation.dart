@@ -1,4 +1,6 @@
+import '../../presentation/helpers/helpers.dart';
+
 abstract class FieldValidation {
   String get field;
-  String? validate(Map input);
+  ValidationError? validate(Map input);
 }

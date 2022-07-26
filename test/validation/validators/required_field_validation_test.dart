@@ -1,4 +1,6 @@
 import 'package:test/test.dart';
+
+import 'package:ignis_insight/presentation/helpers/helpers.dart';
 import 'package:ignis_insight/validation/validators/validators.dart';
 
 void main() {
@@ -15,11 +17,11 @@ void main() {
 
   test('2 - Should return error if value is empty', () async {
     final error = sut.validate({'any_field': ''});
-    expect(error, 'Campo obrigatório');
+    expect(error, ValidationError.requiredField);
   });
 
   test('3 - Should return error if value is null', () async {
     final error = sut.validate({});
-    expect(error, 'Campo obrigatório');
+    expect(error, ValidationError.requiredField);
   });
 }
