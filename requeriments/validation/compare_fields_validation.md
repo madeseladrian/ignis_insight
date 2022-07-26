@@ -2,7 +2,7 @@
 
 > ## Validações
 1. ✅ Deve retornar error se o valor dos campos não forem iguais.
-2. ❌ Deve retornar nulo se o valor dos campos são iguais.
+2. ✅ Deve retornar nulo se o valor dos campos são iguais.
 
 > ## Casos Inválidos
 3. ❌ Deve retornar nulo se um dos campos estiver faltando.
