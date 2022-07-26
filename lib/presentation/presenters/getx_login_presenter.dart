@@ -4,7 +4,7 @@ import 'package:ignis_insight/presentation/helpers/helpers.dart';
 import '../protocols/protocols.dart';
 import 'package:ignis_insight/ui/helpers/helpers.dart';
 
-class GetxLoginPresenter extends GetxController  {
+class GetxLoginPresenter extends GetxController {
   final Validation validation;
 
   String? _email;

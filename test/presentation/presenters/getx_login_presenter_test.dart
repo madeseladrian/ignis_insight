@@ -27,9 +27,10 @@ void main() {
     verify(() => validation.validate(field: 'email', input: formData)).called(1);
   });
 
-  test('2 - Should emailErrorStream returns invalidFieldError if email is empty', () async {
+  test('2,3 - Should emailErrorStream returns invalidFieldError if email is empty', () async {
     validation.mockValidationError(value: ValidationError.invalidField);   
     sut.emailErrorStream.listen(expectAsync1((error) => expect(error, UIError.invalidField)));
+    sut.validateEmail(email);
     sut.validateEmail(email);
   });
 }
