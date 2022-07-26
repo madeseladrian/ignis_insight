@@ -24,4 +24,10 @@ void main() {
     final error = sut.validate({'any_field': faker.randomGenerator.string(3, min: 1)});
     expect(error, 'Campo inválido');
   });
+  
+  test('4 - Should return null if value is equal min size', () {
+    final name = sut.validate({'any_field': faker.randomGenerator.string(3, min: 3)});
+    expect(name, null);
+  });
+
 }
