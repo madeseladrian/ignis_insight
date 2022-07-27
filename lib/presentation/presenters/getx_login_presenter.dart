@@ -29,6 +29,7 @@ class GetxLoginPresenter extends GetxController with FormManager {
     final error = validation.validate(field: field, input: formData);
     switch (error) {
       case ValidationError.invalidField: return UIError.invalidField;
+      case ValidationError.requiredField: return UIError.requiredField;
       default: return null;
     }
   }
