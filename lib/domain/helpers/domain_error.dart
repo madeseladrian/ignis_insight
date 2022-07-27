@@ -1,3 +1,4 @@
 enum DomainError {
+  validationError,
   unexpected
 }

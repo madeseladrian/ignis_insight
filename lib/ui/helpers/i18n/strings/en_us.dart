@@ -2,10 +2,10 @@
 import '../../helpers.dart';
 
 class EnUs implements Translations {
-  String get msgInvalidCredentials => 'Invalid credentials.';
   String get msgInvalidField => 'Invalid field';
   String get msgRequiredField => 'Required field';
   String get msgUnexpectedError => 'Something wrong happened. Please try again soon.';
+  String get msgValidationError => 'Validation Error';
 
   String get clickHere => 'Click here';
   String get email => 'Email';

@@ -14,7 +14,7 @@
 11.✅ Para o formulário estar válido todos os Streams de erro precisam estar null e todos os campos obrigatórios não podem estar vazios
 12.✅ Chamar o Authentication com email e senha corretos
 13.✅ Notificar o isLoadingStream como true antes de chamar o Authentication e fale no fim do Authentication
-14.❌ Notificar o mainErrorStream caso o Authentication retorne erro: InvalidCredentials 
+14.✅ Notificar o mainErrorStream caso o Authentication retorne erro: InvalidCredentials 
 15.❌ Notificar o mainErrorStream caso o Authentication retorne erro: UnexpectedError
 16.❌ Gravar o Account no cache em caso de sucesso
 17.❌ Notificar o mainErrorStream caso o SaveCurrentAccount retorne erro

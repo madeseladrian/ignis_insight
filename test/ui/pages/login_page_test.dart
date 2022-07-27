@@ -169,10 +169,10 @@ void main() {
   testWidgets('16 - Should present error message if authentication fails', (WidgetTester tester) async {
     await loadPage(tester);
 
-    presenter.emitMainError(UIError.invalidCredentials);
+    presenter.emitMainError(UIError.validationError);
     await tester.pump();
 
-    expect(find.text('Credenciais inválidas.'), findsOneWidget);
+    expect(find.text('Erro de Validação'), findsOneWidget);
   });
 
   testWidgets('17 - Should present error message if authentication throws', (WidgetTester tester) async {

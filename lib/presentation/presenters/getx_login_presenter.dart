@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:ignis_insight/domain/helpers/domain_error.dart';
 
 import '../../domain/params/params.dart';
 import '../../domain/usecases/usecases.dart';
@@ -10,7 +11,7 @@ import '../mixins/mixins.dart';
 import '../protocols/protocols.dart';
 
 class GetxLoginPresenter extends GetxController 
-with FormManager, LoadingManager {
+with FormManager, LoadingManager, UIErrorManager {
   final Authentication authentication;
   final Validation validation;
 
@@ -61,9 +62,19 @@ with FormManager, LoadingManager {
   }
 
   Future<void> auth() async {
-    isLoading = true;
-    await authentication.auth(
-      AuthenticationParams(email: _email, password: _password)
-    );
+    try {
+      mainError = null;
+      isLoading = true;
+      await authentication.auth(
+        AuthenticationParams(email: _email, password: _password)
+      );
+    } on DomainError catch (error) {
+      isLoading = false;
+      switch (error) {
+        case DomainError.validationError:
+          mainError = UIError.validationError; break;
+        default: mainError = UIError.unexpected;
+      }
+    }
   }
 }

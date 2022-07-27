@@ -3,6 +3,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
 import 'package:ignis_insight/domain/entities/entities.dart';
+import 'package:ignis_insight/domain/helpers/helpers.dart';
 import 'package:ignis_insight/domain/params/params.dart';
 
 import 'package:ignis_insight/presentation/helpers/helpers.dart';
@@ -126,10 +127,17 @@ void main() {
   });
 
   test('13 - Should emit correct events on Authentication success', () async {
-    sut.validateEmail(email);
-    sut.validatePassword(password);
-    
     expectLater(sut.isLoadingStream, emits(true));
+    expectLater(sut.mainErrorStream, emits(null));
+
+    await sut.auth();
+  });
+
+  test('14 - Should emit correct events on ValidationError', () async {
+    authentication.mockAuthenticationError(DomainError.validationError);
+    
+    expectLater(sut.isLoadingStream, emitsInOrder([true, false]));
+    expectLater(sut.mainErrorStream, emitsInOrder([null, UIError.validationError]));
 
     await sut.auth();
   });
