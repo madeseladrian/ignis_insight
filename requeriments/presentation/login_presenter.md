@@ -11,7 +11,7 @@
 retorne error
 8. ✅ Não notificar o passwordErrorStream se o valor for igual ao último
 erro
-9. ❌ Notificar o isFormValidStream após alterar a senha, mas mas não notificar 
+9. ✅ Notificar o isFormValidStream após alterar a senha, mas mas não notificar 
 o isFormValidStream se o valor for igual ao último
 10.❌ Notificar o passwordErrorStream com null, caso o Validation não retorne erro
 11.❌ Para o formulário estar válido todos os Streams de erro precisam estar null 
