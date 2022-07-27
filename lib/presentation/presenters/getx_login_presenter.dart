@@ -45,4 +45,9 @@ class GetxLoginPresenter extends GetxController with FormManager {
     _emailError.value = _validateField(field: 'email');
     _validateForm();
   }
+
+  void validatePassword(String password) {
+    _password = password;
+    _validateField(field: 'password');
+  }
 }

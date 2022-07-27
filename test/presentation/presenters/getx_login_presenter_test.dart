@@ -10,11 +10,13 @@ import '../mocks/mocks.dart';
  
 void main() {
   late String email;
+  late String password;
   late ValidationSpy validation;
   late GetxLoginPresenter sut;
 
   setUp(() {
     email = faker.internet.email();
+    password = faker.internet.password();
     validation = ValidationSpy();
     sut = GetxLoginPresenter(
       validation: validation
@@ -43,5 +45,13 @@ void main() {
     
     sut.validateEmail(email);
     sut.validateEmail(email);
+  });
+
+  test('6 - Should call Validation with correct password', () async {
+    final formData = {'email': null, 'password': password};
+    
+    sut.validatePassword(password);
+    
+    verify(() => validation.validate(field: 'password', input: formData)).called(1);
   });
 }
