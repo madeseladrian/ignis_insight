@@ -176,4 +176,10 @@ void main() {
 
     await sut.auth();
   });
+
+  test('18 - Should change page on success authentication', () async {
+    sut.navigateToStream.listen(expectAsync1((page) => expect(page, '/welcome')));
+
+    await sut.auth();
+  });
 }

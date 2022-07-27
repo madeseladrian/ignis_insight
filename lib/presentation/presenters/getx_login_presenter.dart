@@ -11,7 +11,7 @@ import '../mixins/mixins.dart';
 import '../protocols/protocols.dart';
 
 class GetxLoginPresenter extends GetxController 
-with FormManager, LoadingManager, UIErrorManager {
+with FormManager, LoadingManager, NavigationManager, UIErrorManager {
   final Authentication authentication;
   final SaveCurrentAccount saveCurrentAccount;
   final Validation validation;
@@ -71,6 +71,7 @@ with FormManager, LoadingManager, UIErrorManager {
         AuthenticationParams(email: _email, password: _password)
       );
       await saveCurrentAccount.save(accountEntity);
+      navigateTo = '/welcome';
     } on DomainError catch (error) {
       isLoading = false;
       switch (error) {
