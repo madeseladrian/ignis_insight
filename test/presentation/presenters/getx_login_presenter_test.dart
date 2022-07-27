@@ -201,4 +201,11 @@ void main() {
 
     sut.recoverPassword();
   });
+
+  test('22 - Should change to recover password page multiple times', () async {
+    expectLater(sut.navigateToStream, emitsInOrder(['/recoverPassword', '/recoverPassword']));
+    
+    sut.recoverPassword();
+    sut.recoverPassword();
+  });
 }
