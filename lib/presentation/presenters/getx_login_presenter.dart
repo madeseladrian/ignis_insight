@@ -9,7 +9,8 @@ import '../helpers/helpers.dart';
 import '../mixins/mixins.dart';
 import '../protocols/protocols.dart';
 
-class GetxLoginPresenter extends GetxController with FormManager {
+class GetxLoginPresenter extends GetxController 
+with FormManager, LoadingManager {
   final Authentication authentication;
   final Validation validation;
 
@@ -60,6 +61,7 @@ class GetxLoginPresenter extends GetxController with FormManager {
   }
 
   Future<void> auth() async {
+    isLoading = true;
     await authentication.auth(
       AuthenticationParams(email: _email, password: _password)
     );
