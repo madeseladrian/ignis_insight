@@ -1,5 +1,6 @@
 import 'package:test/test.dart';
 
+import 'package:ignis_insight/presentation/helpers/helpers.dart';
 import 'package:ignis_insight/main/composites/composites.dart';
 import '../../validation/mocks/mocks.dart';
 
@@ -23,5 +24,16 @@ void main() {
     final error = sut.validate(field: 'any_field', input: formData);
 
     expect(error, null);
+  });
+
+  test('2 - Should return the first error', () async {
+    validation1.mockValidationError(ValidationError.invalidField);
+    validation2.mockValidationError(ValidationError.requiredField);
+    validation3.mockValidationError(ValidationError.invalidField);
+
+    final formData = {'any_field': 'any_value'};
+    final error = sut.validate(field: 'any_field', input: formData);
+
+    expect(error, ValidationError.requiredField);
   });
 }
