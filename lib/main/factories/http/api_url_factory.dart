@@ -1,0 +1,1 @@
+String makeApiUrl(String path) => 'https://fastapi-mades.herokuapp.com/$path';

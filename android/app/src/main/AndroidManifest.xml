@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ignis_insight">
    <application
-        android:label="ignis_insight"
+        android:label="Ignis Insight"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

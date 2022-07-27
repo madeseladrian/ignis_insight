@@ -78,7 +78,7 @@ implements LoginPresenter {
         AuthenticationParams(email: _email, password: _password)
       );
       await saveCurrentAccount.save(accountEntity);
-      navigateTo = '/welcome';
+      navigateTo = '/initial';
     } on DomainError catch (error) {
       isLoading = false;
       switch (error) {
