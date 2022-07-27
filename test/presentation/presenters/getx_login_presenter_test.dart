@@ -182,4 +182,10 @@ void main() {
 
     await sut.auth();
   });
+
+  test('19 - Should change to support page', () async {
+    sut.navigateToStream.listen(expectAsync1((page) => expect(page, '/support')));
+
+    sut.support();
+  });
 }

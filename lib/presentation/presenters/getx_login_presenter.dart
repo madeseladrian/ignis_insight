@@ -81,4 +81,8 @@ with FormManager, LoadingManager, NavigationManager, UIErrorManager {
       }
     }
   }
+
+  void support() {
+    navigateTo = '/support';
+  }
 }
