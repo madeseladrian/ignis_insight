@@ -188,4 +188,11 @@ void main() {
 
     sut.support();
   });
+
+  test('20 - Should change to support page multiple times', () async {
+    expectLater(sut.navigateToStream, emitsInOrder(['/support', '/support']));
+    
+    sut.support();
+    sut.support();
+  });
 }

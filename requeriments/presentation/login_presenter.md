@@ -20,6 +20,6 @@
 17.✅ Notificar o mainErrorStream caso o SaveCurrentAccount retorne erro
 18.✅ Levar o usuário pra tela de Inicial em caso de sucesso
 19.✅ Levar o usuário pra tela de Suporte
-20.❌ Levar o usuário pra tela de Suporte várias vezes seguidas
+20.✅ Levar o usuário pra tela de Suporte várias vezes seguidas
 21.❌ Levar o usuário pra tela de Redefinir senha
 22.❌ Levar o usuário pra tela de Redefinir senha várias vezes seguidas
