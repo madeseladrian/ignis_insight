@@ -53,11 +53,12 @@ void main() {
     verify(() => validation.validate(field: 'password', input: formData)).called(1);
   });
 
-  test('7 - Should passwordErrorStream returns invalidFieldError if password is empty', () async {
+  test('7,8 - Should passwordErrorStream returns invalidFieldError if password is empty', () async {
     validation.mockValidationError(value: ValidationError.invalidField);
    
     sut.passwordErrorStream.listen(expectAsync1((error) => expect(error, UIError.invalidField)));
 
+    sut.validatePassword(password);
     sut.validatePassword(password);
   });
 }

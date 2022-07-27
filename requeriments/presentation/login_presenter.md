@@ -9,7 +9,7 @@
 6. ✅ Chamar Validation ao alterar a senha
 7. ✅ Notificar o passwordErrorStream com o mesmo erro do Validation, caso 
 retorne error
-8. ❌ Não notificar o passwordErrorStream se o valor for igual ao último
+8. ✅ Não notificar o passwordErrorStream se o valor for igual ao último
 erro
 9. ❌ Notificar o isFormValidStream após alterar a senha, mas mas não notificar 
 o isFormValidStream se o valor for igual ao último
