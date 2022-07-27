@@ -18,6 +18,7 @@ void main() {
   late String password;
   late AccountEntity accountEntity;
   late AuthenticationSpy authentication;
+  late SaveCurrentAccountSpy saveCurrentAccount;
   late ValidationSpy validation;
   late GetxLoginPresenter sut;
 
@@ -27,9 +28,11 @@ void main() {
     accountEntity = EntityFactory.makeAccount();
     authentication = AuthenticationSpy();
     authentication.mockAuthentication(accountEntity);
+    saveCurrentAccount = SaveCurrentAccountSpy();
     validation = ValidationSpy();
     sut = GetxLoginPresenter(
       authentication: authentication,
+      saveCurrentAccount: saveCurrentAccount,
       validation: validation
     );
   });
@@ -149,6 +152,25 @@ void main() {
     sut.validateEmail(email);
     sut.validatePassword(password);
 
+    expectLater(sut.isLoadingStream, emitsInOrder([true, false]));
+    expectLater(sut.mainErrorStream, emitsInOrder([null, UIError.unexpected]));
+
+    await sut.auth();
+  });
+
+  test('16 - Should call SaveCurrentAccount with correct values', () async {
+    await sut.auth();
+
+    verify(() => saveCurrentAccount.save(accountEntity)).called(1);
+  });
+
+  test('17 - Should emit UnexpectedError if SaveCurrentAccount fails', () async {
+    saveCurrentAccount.mockSaveError();
+    sut.validateEmail(email);
+    sut.validatePassword(password);
+    sut.validateEmail(email);
+    sut.validatePassword(password);
+    
     expectLater(sut.isLoadingStream, emitsInOrder([true, false]));
     expectLater(sut.mainErrorStream, emitsInOrder([null, UIError.unexpected]));
 

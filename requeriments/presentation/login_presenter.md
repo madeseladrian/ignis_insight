@@ -16,8 +16,8 @@
 13.✅ Notificar o isLoadingStream como true antes de chamar o Authentication e fale no fim do Authentication
 14.✅ Notificar o mainErrorStream caso o Authentication retorne erro: InvalidCredentials 
 15.✅ Notificar o mainErrorStream caso o Authentication retorne erro: UnexpectedError
-16.❌ Gravar o Account no cache em caso de sucesso
-17.❌ Notificar o mainErrorStream caso o SaveCurrentAccount retorne erro
+16.✅ Gravar o Account no cache em caso de sucesso
+17.✅ Notificar o mainErrorStream caso o SaveCurrentAccount retorne erro
 18.❌ Levar o usuário pra tela de Inicial em caso de sucesso
 19.❌ Levar o usuário pra tela de Suporte
 20.❌ Levar o usuário pra tela de Suporte várias vezes seguidas

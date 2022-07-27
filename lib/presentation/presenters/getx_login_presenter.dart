@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:ignis_insight/domain/helpers/domain_error.dart';
 
 import '../../domain/params/params.dart';
+import '../../domain/helpers/helpers.dart';
 import '../../domain/usecases/usecases.dart';
 
 import '../../ui/helpers/helpers.dart';
@@ -13,6 +13,7 @@ import '../protocols/protocols.dart';
 class GetxLoginPresenter extends GetxController 
 with FormManager, LoadingManager, UIErrorManager {
   final Authentication authentication;
+  final SaveCurrentAccount saveCurrentAccount;
   final Validation validation;
 
   String? _email;
@@ -26,6 +27,7 @@ with FormManager, LoadingManager, UIErrorManager {
 
   GetxLoginPresenter({
     required this.authentication,
+    required this.saveCurrentAccount,
     required this.validation
   });
 
@@ -65,9 +67,10 @@ with FormManager, LoadingManager, UIErrorManager {
     try {
       mainError = null;
       isLoading = true;
-      await authentication.auth(
+      final accountEntity = await authentication.auth(
         AuthenticationParams(email: _email, password: _password)
       );
+      await saveCurrentAccount.save(accountEntity);
     } on DomainError catch (error) {
       isLoading = false;
       switch (error) {
