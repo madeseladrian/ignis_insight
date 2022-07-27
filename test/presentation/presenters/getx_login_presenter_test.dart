@@ -195,4 +195,10 @@ void main() {
     sut.support();
     sut.support();
   });
+
+  test('21 - Should change to recover password page', () async {
+    sut.navigateToStream.listen(expectAsync1((page) => expect(page, '/recoverPassword')));
+
+    sut.recoverPassword();
+  });
 }
